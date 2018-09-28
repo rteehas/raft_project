@@ -1,0 +1,36 @@
+start -n node-1
+start -n node-2
+start -n node-3
+start -n node-4
+start -n node-5
+
+set -n node-1 -k a -v 12
+set -n node-5 -k a -v 12
+get -n node-5 -k a
+
+fail_node -n node-1
+
+set -n node-5 -k b -v 16
+
+fail_node -n node-2
+
+set -n node-5 -k c -v 18
+
+recover_node -n node-1
+fail_node -n node-1
+
+get -n node-5 -k a
+
+recover_node -n node-1
+fail_node -n node-5
+
+set -n node-1 -k a -v 17
+set -n node-3 -k a -v 17
+set -n node-4 -k a -v 17
+
+get -n node-2 -k a
+get -n node-2 -k b
+
+get -n node-1 -k a
+get -n node-3 -k b
+get -n node-4 -k b

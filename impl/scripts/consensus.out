@@ -1,0 +1,34 @@
+>start -n node-1
+>wait -t 2
+>start -n node-2
+>wait -t 2
+>start -n node-3
+>wait -t 2
+>start -n node-4
+>wait -t 2
+>start -n node-5
+>wait -t 2
+
+>wait -t 5
+
+>set -n node-5 -k a -v 12
+>wait -t 2
+SET id=1 OK: a = 12
+
+>fail_node -n node-5
+>wait -t 2
+
+>wait -t 5
+
+>get -n node-1 -k a
+>wait -t 2
+ERROR: GET id=2 failed (k=a): You have contacted a follower. Please resend your request to node-4.
+>get -n node-2 -k a
+>wait -t 2
+ERROR: GET id=3 failed (k=a): You have contacted a follower. Please resend your request to node-4.
+>get -n node-3 -k a
+>wait -t 2
+ERROR: GET id=4 failed (k=a): You have contacted a follower. Please resend your request to node-4.
+>get -n node-4 -k a
+>wait -t 2
+GET id=5 OK: a = 12

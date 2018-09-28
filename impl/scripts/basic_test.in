@@ -1,0 +1,44 @@
+start -n node-1
+wait -t 2
+start -n node-2
+wait -t 2
+start -n node-3
+wait -t 2
+start -n node-4
+wait -t 2
+start -n node-5
+wait -t 2
+
+wait -t 5
+
+set -n node-5 -k a -v 12
+wait -t 2
+get -n node-5 -k a
+wait -t 2
+
+set -n node-5 -k b -v 1000
+wait -t 2
+get -n node-5 -k b
+wait -t 2
+
+set -n node-5 -k c -v 0
+wait -t 2
+get -n node-5 -k c
+wait -t 2
+
+set -n node-1 -k a -v 1
+wait -t 2
+get -n node-1 -k c
+wait -t 2
+
+set -n node-3 -k b -v 90
+wait -t 2
+get -n node-3 -k a
+wait -t 2
+
+get -n node-5 -k a
+wait -t 2
+get -n node-5 -k b
+wait -t 2
+get -n node-5 -k c
+wait -t 2

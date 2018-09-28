@@ -1,0 +1,30 @@
+start -n node-1
+start -n node-2
+start -n node-3
+start -n node-4
+start -n node-5
+
+set -n node-5 -k a -v 10
+set -n node-5 -k b -v 1
+set -n node-5 -k c -v 1000
+
+fail_node -n node-5
+
+fail_node -n [leader1]
+
+fail_node -n [leader2]
+
+recover_node -n [leader2]
+
+fail_node -n [leader3]
+
+recover_node -n [leader1]
+
+fail_node -n [leader4]
+
+recover_node -n [leader3]
+recover_node -n [leader4]
+
+get -n [leader5] -k a 
+get -n [leader5] -k b
+get -n [leader5] -k c
