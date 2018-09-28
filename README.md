@@ -1,5 +1,5 @@
 # raft_project
-Final group project for my senior year Advanced Distributed Systems course
+Final group project for my senior year Advanced Distributed Systems course (http://uchicago-cs.github.io/cmsc23310/index.html) taught by Professor Ian Foster. My group decided to implement the RAFT algorithm for the system that we built. Aninitial breakdown of the work can be found below.
 
 ===== Names =====
 Ji Seung "Anna" Kim (jiseung@uchicago.edu)
